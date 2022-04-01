@@ -1,0 +1,96 @@
+---
+title: '5293'
+author: "cz2688"
+date: "2022/3/31"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Markdown
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+```{r cars}
+summary(cars)
+```
+
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r pressure, echo=FALSE}
+library(MASS)
+car.data <- data.frame(Cars93$AirBags, Cars93$Type)
+target <- table(car.data)
+chisq.test(target)
+```
+```{r}
+
+ca = matrix(c(20,2,14,3), ncol = 2)
+chisq.test(ca, correct = T)
+fisher.test(ca)
+install.packages("rcompanion")
+library(rcompanion)
+data76<-matrix(c(199,164,118,7,18,26),
+               nr = 3,
+               dimnames = list(c("物理疗法组", "药物治疗组","外用膏药组"),
+                               c("有效", "无效")))
+pairwiseNominalIndependence(data76,
+                            fisher = FALSE,
+                            gtest  = FALSE,
+                            chisq  = TRUE,
+                            method = "fdr")
+```
+```{r}
+data54 <- c(33,18,24,31,1,9,2,2)
+data54m <- matrix(data54,nrow=2,
+                  dimnames=list(c("对照组","实验组"),
+                                c("无效","有效","显效","痊愈")))
+data54m
+
+#install.packages("Ridit")
+library(Ridit)
+ridit(data54m,1)
+install.packages("vcdExtra")
+library(vcdExtra) 
+# 载入vcdExtra包
+data711 <- matrix(c(70,27,16,9,22,24,23,20,4,9,13,15,2,3,7,14),nrow=4)
+dimnames(data711) <- list(age=c("20~","30~","40~","≥50"),degree=c("-","+","++","+++"))
+CMHtest(data711) # 分析数据
+```
+
+```{r}
+data56 <- c(8,4,22,26,11,9,19,21)
+data56a <- array(data56,dim=c(2,2,2))
+data56a
+dimnames(data56a) <- list(
+  c("对照组","试验组"),
+  c("无效","有效"),
+  c("中心1","中心2"))
+CMHtest(data56a,overall=TRUE)
+```
+```{r}
+smokers  <- c( 83, 90, 129, 70 )
+patients <- c( 86, 93, 136, 82 ) ###提供每组的总例数
+prop.trend.test(smokers, patients)
+lungtumor <- data.frame(dose = rep(c(0, 1, 2), c(40, 50, 48)),
+                        tumor = c(rep(c(0, 1), c(38, 2)),
+                                  rep(c(0, 1), c(43, 7)),
+                                  rep(c(0, 1), c(33, 15))))
+DescTools::CochranArmitageTest(table(lungtumor))
+prop.trend.test(smokers, patients, c(0,0,0,1))
+#install.packages("NCStats")
+rc <- matrix(c(3,3,4,2),nrow=4,byrow=T)
+rc <- matrix(c(3,3,4,2),nrow=2,byrow=T)
+colnames(rc) <- c("somker","nonsmoker")
+rownames(rc) <- c("g1","g2")
+rc
+
+```
+
+
